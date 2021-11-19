@@ -1,58 +1,79 @@
-#include<Servo.h>
-Servo servo;
-int tri=10;
-int eco=11;
-long distance,duration;
-int a=6;
-int g=7;
-int r=8;
-void setup() {
-  // put your setup code here, to run once:
-servo.attach(5);
-pinMode(10,OUTPUT);
-pinMode(6,OUTPUT);
-pinMode(7,OUTPUT);
-pinMode(8,OUTPUT);
-pinMode(11,INPUT);
-Serial.begin(9600);
-}
+<!DOCTYPE html>
+<html lang="en">
 
-void loop() {
-  // put your main code here, to run repeatedly:
-digitalWrite(tri,LOW);
-delay(2);
-digitalWrite(tri,HIGH);
-delay(10);
-digitalWrite(tri,LOW);
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurduino Programme</title>
+</head>
 
-duration=pulseIn(eco,HIGH);
-distance=duration/58.2;
-Serial.print("distance   ");
-Serial.println(distance);
-Serial.println("cm");
-delay(400);
-digitalWrite(g,HIGH);
-digitalWrite(r,LOW);
- if(distance<=15)
-{
-servo.write(125);
- delay(15000);
- 
-  digitalWrite(a,HIGH);
-  digitalWrite(g,LOW);
-  delay(5000); 
-  
-   servo.write(3);
-  digitalWrite(a,LOW);
-  digitalWrite(r,HIGH);
-  delay(7000);
+<body>
 
-}
+    <pre>
 
-else
-{
-  servo.write(3);
-  digitalWrite(a,LOW);
-}
 
-}
+    #include Servo.h 
+        Servo servo;
+        int tri=10;
+        int eco=11;
+        long distance,duration;
+        int a=6;
+        int g=7;
+        int r=8;
+        void setup() {
+        // put your setup code here, to run once:
+        servo.attach(5);
+        pinMode(10,OUTPUT);
+        pinMode(6,OUTPUT);
+        pinMode(7,OUTPUT);
+        pinMode(8,OUTPUT);
+        pinMode(11,INPUT);
+        Serial.begin(9600);
+        }
+
+    void loop() {
+    // put your main code here, to run repeatedly:
+        
+        digitalWrite(tri,LOW);
+        delay(2);
+        digitalWrite(tri,HIGH);
+        delay(10);
+        digitalWrite(tri,LOW);
+
+        duration=pulseIn(eco,HIGH);
+        distance=duration/58.2;
+        Serial.print("distance ");
+        Serial.println(distance);
+        Serial.println("cm");
+        delay(400);
+        digitalWrite(g,HIGH);
+        digitalWrite(r,LOW);
+
+    if(distance<=15) 
+
+    { servo.write(125); 
+        delay(15000); 
+        digitalWrite(a,HIGH); 
+        digitalWrite(g,LOW); 
+        delay(5000);
+        servo.write(3); 
+        digitalWrite(a,LOW); 
+        digitalWrite(r,HIGH); 
+        delay(7000); 
+    } 
+
+    else 
+    { servo.write(3);
+        digitalWrite(a,LOW); 
+    } 
+
+    }
+
+
+
+    </pre>
+
+</body>
+
+</html>
